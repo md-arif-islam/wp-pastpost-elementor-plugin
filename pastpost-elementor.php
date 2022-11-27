@@ -3,7 +3,7 @@
 Plugin Name: PastPost Elementor Plugin
 Plugin URI:
 Description:
-Version: 1.6
+Version: 2.3
 Author: Arif Islam
 Author URI: https://arifislam.techviewing.com
 License: GPLv2 or later

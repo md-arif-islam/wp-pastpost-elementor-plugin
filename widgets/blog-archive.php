@@ -123,7 +123,7 @@ class Elementor_Blog_Archive_PastPost_Widget extends \Elementor\Widget_Base {
         <div class="blog row">
 
 			<?php
-			$category = get_the_category();
+			$category      = get_the_category();
 			$category_slug = $category[0]->slug;
 
 			$args = array(
@@ -161,7 +161,7 @@ class Elementor_Blog_Archive_PastPost_Widget extends \Elementor\Widget_Base {
                                 </div>
                                 <div class="blogs__card--author">
                                     <div class="credit">
-                                        <p class="author">Author</p>
+                                        <p class="author"><?php _e( "Autor", "pastpostelementor" ) ?></p>
                                         <p class="name"><?php the_author_meta( "display_name" ) ?></p>
                                     </div>
                                     <div class="avater">
@@ -175,7 +175,13 @@ class Elementor_Blog_Archive_PastPost_Widget extends \Elementor\Widget_Base {
                                 <a href="<?php echo esc_url( $link ) ?>"><h1><?php the_title() ?></h1></a>
                             </div>
                             <div class="blogs__card--desc">
-                                <p><?php echo mb_strimwidth( get_the_excerpt(), 0, 200, "<a class='read_more' href='${link}'>Read More</a>" ) ;?></p>
+                                <p>
+									<?php
+									$read_more = __( "Lectura", "pastpostelementor" );
+									echo mb_strimwidth( get_the_excerpt(), 0, 200, "<a class='read_more' href='${link}'>{$read_more}</a>" );
+
+									?>
+                                </p>
                             </div>
                             <div class="blogs__card--bottom">
                                 <div class="blogs__card--cat">

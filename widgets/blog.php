@@ -26,7 +26,7 @@ class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
 				$minutes    = floor( $totalWords / $wpm );
 				$seconds    = floor( $totalWords % $wpm / ( $wpm / 60 ) );
 
-				return sprintf( "%s min read", $minutes );
+				return sprintf( "%s min lectura", $minutes );
 			}
 		}
 
@@ -62,7 +62,7 @@ class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
                                 </div>
                                 <div class="blogs__card--author">
                                     <div class="credit">
-                                        <p class="author">Author</p>
+                                        <p class="author"><?php _e( "Autor", "pastpostelementor" ) ?></p>
                                         <p class="name"><?php the_author_meta( "display_name" ) ?></p>
                                     </div>
                                     <div class="avater">
@@ -78,8 +78,10 @@ class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
                                 </a>
                             </div>
                             <div class="blogs__card--desc">
-								<p><?php echo mb_strimwidth( get_the_excerpt(), 0, 90, '' ); ?>
-                                <a class="read_more" href="<?php echo esc_url( $link ) ?>">Read More</a></p>
+                                <p><?php echo mb_strimwidth( get_the_excerpt(), 0, 90, '' ); ?>
+                                    <a class="read_more"
+                                       href="<?php echo esc_url( $link ) ?>"><?php _e( "Lectura", "pastpostelementor" ); ?></a>
+                                </p>
                             </div>
                             <div class="blogs__card--bottom">
                                 <div class="blogs__card--cat">
@@ -87,7 +89,7 @@ class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
 									$categories  = get_the_category( get_the_ID() );
 									$categoriesS = array_slice( $categories, 0, 2 );
 									foreach ( $categoriesS as $category ) {
-										$category_link = get_category_link($category->cat_ID);
+										$category_link = get_category_link( $category->cat_ID );
 										echo "<a href='${category_link}' title='{$category->name}'><p>{$category->name}</p></a>";
 									}
 									?>

@@ -114,7 +114,7 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
 				$minutes    = floor( $totalWords / $wpm );
 				$seconds    = floor( $totalWords % $wpm / ( $wpm / 60 ) );
 
-				return sprintf( "%s min read", $minutes );
+				return sprintf( "%s min lectura", $minutes );
 			}
 		}
 
@@ -157,7 +157,7 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
                                 </div>
                                 <div class="blogs__card--author">
                                     <div class="credit">
-                                        <p class="author">Author</p>
+                                        <p class="author"><?php _e( "Autor", "pastpostelementor" ) ?></p>
                                         <p class="name"><?php the_author_meta( "display_name" ) ?></p>
                                     </div>
                                     <div class="avater">
@@ -171,7 +171,10 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
                                 <a href="<?php echo esc_url( $link ) ?>"><h1><?php the_title() ?></h1></a>
                             </div>
                             <div class="blogs__card--desc">
-                                <p><?php echo mb_strimwidth( get_the_excerpt(), 0, 400, "<a class='read_more' href='${link}'>Read More</a>" ) ;?></p>
+                                <p><?php
+	                                $read_more = __( "Lectura", "pastpostelementor" );
+	                                echo mb_strimwidth( get_the_excerpt(), 0, 400, "<a class='read_more' href='${link}'>{$read_more}</a>" );
+                                    ?></p>
                             </div>
                             <div class="blogs__card--bottom">
                                 <div class="blogs__card--cat">
@@ -232,7 +235,7 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
                                 </div>
                                 <div class="blogs__card--author">
                                     <div class="credit">
-                                        <p class="author">Author</p>
+                                        <p class="author"><?php _e( "Autor", "pastpostelementor" ) ?></p>
                                         <p class="name"><?php the_author_meta( "display_name" ) ?></p>
                                     </div>
                                     <div class="avater">
@@ -246,18 +249,21 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
                                 <a href="<?php echo esc_url( $link ) ?>"><h1><?php the_title() ?></h1></a>
                             </div>
                             <div class="blogs__card--desc">
-                                <p><?php echo mb_strimwidth( get_the_excerpt(), 0, 200, "<a class='read_more' href='${link}'>Read More</a>" ) ;?></p>
+                                <p><?php
+	                                $read_more = __( "Lectura", "pastpostelementor" );
+                                    echo mb_strimwidth( get_the_excerpt(), 0, 190, "<a class='read_more' href='${link}'>{$read_more}</a>" ); ?>
+                                </p>
                             </div>
                             <div class="blogs__card--bottom">
                                 <div class="blogs__card--cat">
-	                                <?php
-	                                $categories  = get_the_category( get_the_ID() );
-	                                $categoriesS = array_slice( $categories, 0, 2 );
-	                                foreach ( $categoriesS as $category ) {
-		                                $category_link = get_category_link($category->cat_ID);
-		                                echo "<a href='${category_link}' title='{$category->name}'><p>{$category->name}</p></a>";
-	                                }
-	                                ?>
+									<?php
+									$categories  = get_the_category( get_the_ID() );
+									$categoriesS = array_slice( $categories, 0, 2 );
+									foreach ( $categoriesS as $category ) {
+										$category_link = get_category_link( $category->cat_ID );
+										echo "<a href='${category_link}' title='{$category->name}'><p>{$category->name}</p></a>";
+									}
+									?>
                                 </div>
                                 <div class="blogs__card--date">
                                     <p class="rtime"><?php echo estimateReadingTime( get_the_content() ) ?></p>
@@ -284,7 +290,7 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
 					'posts_per_page' => - 1,
 					'paged'          => - 1,
 					'orderby'        => "date",
-					'order'          => "ASC",
+					'order'          => "DESC",
 				);
 
 				$query = new WP_Query( $args );
@@ -306,7 +312,7 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
                                 </div>
                                 <div class="blogs__card--author">
                                     <div class="credit">
-                                        <p class="author">Author</p>
+                                        <p class="author"><?php _e( "Autor", "pastpostelementor" ) ?></p>
                                         <p class="name"><?php the_author_meta( "display_name" ) ?></p>
                                     </div>
                                     <div class="avater">
@@ -320,7 +326,12 @@ class Elementor_All_Blogs_PastPost_Widget extends \Elementor\Widget_Base {
                                 <a href="<?php echo esc_url( $link ) ?>"><h1><?php the_title() ?></h1></a>
                             </div>
                             <div class="blogs__card--desc">
-                                <p><?php echo mb_strimwidth( get_the_excerpt(), 0, 200, "<a class='read_more' href='${link}'>Read More</a>" ) ;?></p>
+                                <p>
+                                    <?php
+									$read_more = __( "Lectura", "pastpostelementor" );
+									echo mb_strimwidth( get_the_excerpt(), 0, 200, "<a class='read_more' href='${link}'>{$read_more}</a>" );
+									?>
+                                </p>
                             </div>
                             <div class="blogs__card--bottom">
                                 <div class="blogs__card--cat">

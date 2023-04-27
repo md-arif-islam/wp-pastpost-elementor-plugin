@@ -3,7 +3,7 @@
 Plugin Name: PastPost Elementor Plugin
 Plugin URI:
 Description:
-Version: 2.3
+Version: 2.0
 Author: Arif Islam
 Author URI: https://arifislam.techviewing.com
 License: GPLv2 or later
@@ -90,15 +90,33 @@ final class ElementorCustomExtension {
 
 	public function init_widgets() {
 		require_once( __DIR__ . '/widgets/blog.php' );
+		require_once( __DIR__ . '/widgets/blog-new.php' );
 		require_once( __DIR__ . '/widgets/slider.php' );
 		require_once( __DIR__ . '/widgets/all-blogs.php' );
 		require_once( __DIR__ . '/widgets/blog-archive.php' );
+		require_once( __DIR__ . '/widgets/slider-new.php' );
+
+
+		require_once( __DIR__ . '/widgets/post-all.php' );
+		require_once( __DIR__ . '/widgets/post-first.php' );
+		require_once( __DIR__ . '/widgets/post-last.php' );
+		require_once( __DIR__ . '/widgets/post-middle.php' );
+
+
 
 		// Register widget
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Blog_PastPost_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Blog_New_PastPost_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Slider_PastPost_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_All_Blogs_PastPost_Widget() );
 		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Blog_Archive_PastPost_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Slider_New_PastPost_Widget() );
+
+
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Post__All_PastPost_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Post_First_PastPost_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Post_Last_PastPost_Widget() );
+		Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Post_Middle_PastPost_Widget() );
 
 	}
 

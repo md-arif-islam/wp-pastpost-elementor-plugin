@@ -1,12 +1,12 @@
 <?php
 
-class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
+class Elementor_Blog_New_PastPost_Widget extends \Elementor\Widget_Base {
 	public function get_name() {
-		return "PastPost__Blog";
+		return "PastPost__Blog_New";
 	}
 
 	public function get_title() {
-		return __( "Blog • PastPost", 'pastpostelementor' );
+		return __( "Blog New • PastPost", 'pastpostelementor' );
 	}
 
 	public function get_icon() {
@@ -31,8 +31,8 @@ class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
 		}
 
 		?>
-        <div class="blog">
-            <div class="owl-carousel owl-theme blog__slider">
+        <div class="post">
+            <div class="owl-carousel owl-theme post__slider">
 				<?php
 
 				$args = array(
@@ -55,49 +55,48 @@ class Elementor_Blog_PastPost_Widget extends \Elementor\Widget_Base {
 						$link          = get_permalink( get_the_ID() );
 						$get_author_id = get_the_author_meta( 'ID' );
 						?>
-                        <div style="height: 90%!important;" class="blogs__card d-flex align-items-stretch">
-                            <div class="blogs__card--top">
-                                <div class="blogs__card--img">
-                                    <a href="<?php echo esc_url( $link ); ?>"><img src="<?php echo $img_url; ?>" alt=""></a>
+                        <div class="posts__card d-flex align-items-stretch">
+                            <div class="posts__card--top">
+                                <div class="posts__card--img">
+                                    <a href="<?php echo esc_url( $link ); ?>">
+                                        <img src="<?php echo $img_url; ?>" alt="">
+                                    </a>
                                 </div>
-                                <div class="blogs__card--author">
+                                <div class="posts__card--date">
+                                    <p class="date"><?php echo get_the_time( "j M, Y" ) ?></p>
+                                </div>
+
+                            </div>
+                            <div class="posts__card--second">
+                                <div class="posts__card--author">
+                                    <div class="avater">
+                                        <img class="rounded-circle" src="<?php echo get_avatar_url( $get_author_id ) ?>" alt="">
+                                    </div>
                                     <div class="credit">
                                         <p class="author"><?php _e( "Autor", "pastpostelementor" ) ?></p>
                                         <p class="name"><?php the_author_meta( "display_name" ) ?></p>
                                     </div>
-                                    <div class="avater">
-                                        <img class="rounded-circle" src="<?php echo get_avatar_url( $get_author_id ) ?>"
-                                             alt="">
-                                    </div>
+                                </div>
+                                <div class="posts__card--read">
+                                    <p class="rtime"><?php echo estimateReadingTime( get_the_content() ) ?></p>
                                 </div>
                             </div>
-                            <div class="blogs__card--title">
-                                <a href="<?php echo esc_url( $link ) ?>">
-                                    <h1><?php echo mb_strimwidth( get_the_title(), 0, 30, "..." ); ?></h1>
+                            <div class="posts__card--title">
+                                <a href="<?php echo esc_url( $link ); ?>">
+                                    <h1>
+	                                    <?php echo mb_strimwidth( get_the_title(), 0, 30, "..." ); ?>
+                                    </h1>
 
                                 </a>
                             </div>
-                            <div class="blogs__card--desc">
+                            <div class="posts__card--desc">
                                 <p><?php echo mb_strimwidth( get_the_excerpt(), 0, 90, '' ); ?>
                                     <a class="read_more"
                                        href="<?php echo esc_url( $link ) ?>"><?php _e( "Lectura", "pastpostelementor" ); ?></a>
                                 </p>
                             </div>
-                            <div class="blogs__card--bottom">
-                                <div class="blogs__card--cat">
-									<?php
-									$categories  = get_the_category( get_the_ID() );
-									$categoriesS = array_slice( $categories, 0, 2 );
-									foreach ( $categoriesS as $category ) {
-										$category_link = get_category_link( $category->cat_ID );
-										echo "<a href='${category_link}' title='{$category->name}'><p>{$category->name}</p></a>";
-									}
-									?>
-                                </div>
-                                <div class="blogs__card--date">
-                                    <p class="rtime"><?php echo estimateReadingTime( get_the_content() ) ?></p>
-                                    <p class="date"><?php echo get_the_time( "j M, Y" ) ?></p>
-                                </div>
+                            <div class="posts__card--bottom">
+
                             </div>
                         </div>
 						<?php

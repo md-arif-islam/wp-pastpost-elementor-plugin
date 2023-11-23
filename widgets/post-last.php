@@ -68,7 +68,11 @@ class Elementor_Post_Last_PastPost_Widget extends \Elementor\Widget_Base {
                                 <div class="post__last--title">
                                     <a href="<?php echo esc_url( $link ); ?>">
                                         <h1>
+<<<<<<< HEAD
+											<?php echo mb_strimwidth( get_the_title(), 0, 70, "..." ); ?>
+=======
 											<?php echo mb_strimwidth( get_the_title(), 0, 50, "..." ); ?>
+>>>>>>> 9a2101edf2e7d9060c7cfc61a9ff9a0f50bfa837
                                         </h1>
 
                                     </a>

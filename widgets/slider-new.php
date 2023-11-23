@@ -51,7 +51,11 @@ class Elementor_Slider_New_PastPost_Widget extends \Elementor\Widget_Base {
                         <div class="row featured__card flex-md-row-reverse">
                             <div class="col-md-6">
                                 <div class="featured__card--img">
+<<<<<<< HEAD
+                                    <img src="<?php echo $img_url ?>" alt="" loading="lazy"/>
+=======
                                     <img src="<?php echo $img_url ?>" alt=""/>
+>>>>>>> 9a2101edf2e7d9060c7cfc61a9ff9a0f50bfa837
                                 </div>
                             </div>
                             <div class="col-md-6">
